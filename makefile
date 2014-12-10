@@ -146,7 +146,7 @@ else
   CCFLAGS  = -O3   
   CXXFLAGS = -g `root-config --cflags`
   INCLUDES = 
-  LIBS     = -L/Users/YeYang/root/lib/root -lCore -lCint -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lTree -lRint -lPostscript -lMatrix -lPhysics -lMathCore -lThread -lpthread -lm -ldl
+  LIBS     = -L$(ROOTSYS)/lib/root -lCore -lCint -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lTree -lRint -lPostscript -lMatrix -lPhysics -lMathCore -lThread -lpthread -lm -ldl
   SRCS8    = mpi-non.f unix90.f mdp-uni90.f
 endif
 endif
