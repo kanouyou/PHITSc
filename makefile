@@ -40,12 +40,18 @@ ifeq ($(ENVFLAGS),LinIfort)
   SRCS8   = mpi-lin.f unix90.f mdp-uni90.f
   LIBS = -lmpi $(OMPFLAGS)  ### -lmpi sometimes -lmpich, or not necessary
  else
-  FC = ifort
+  FC  = ifort
+  CC  = icc
+  CXX = icpc
   SRCS8   = mpi-non.f unix90.f mdp-uni90.f
-  LIBS = $(OMPFLAGS)
+  LIBS = $(OMPFLAGS) -lstdc++
  endif
  INCLUDES =
- FCFLAGS = -O3 -fpconstant 
+ FCFLAGS = -O3 -fpconstant -fno-second-underscore
+ CXXFLAGS= -03 `root-config --cflags`
+ CXXLIBS  = `root-config --libs`
+ CCFLAGS  = -O3
+ CCLIBS   =
  LD      = $(FC) 
  LDFLAGS =
 endif
@@ -334,7 +340,7 @@ OBJS = $(OBJS0) $(OBJS1) $(OBJS2) $(OBJS3) \
 			 $(OBJS10) $(OBJS11) $(OBJS12)
 
 $(TARGET) : $(OBJS)
-	$(LD) $(LDFLAGS) -o $@ $^ $(LIBS) 
+	$(LD) $(LDFLAGS) -o $@ $^ $(LIBS) $(LIBS) 
 
 .f.o:
 	$(FC) -c $(FCFLAGS) $(OPTFLAGS) $*.f 
