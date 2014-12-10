@@ -24,6 +24,8 @@ ENVFLAGS = MacGfort
 # In that case, you have to type 'make -j' again, or do not use '-j' option
 # then you will succeed in making the PHITS executable.
 
+# modified by Ye Yang (Kyushu university)
+
 ifeq ($(ENVFLAGS),)
 $(error Error! ENVFLAGS is not defined)
 endif
