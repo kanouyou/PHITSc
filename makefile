@@ -152,7 +152,8 @@ else
   CCFLAGS  = -O3   
   CXXFLAGS = -g `root-config --cflags`
   INCLUDES = 
-  LIBS     = -L$(ROOTSYS)/lib/root -lCore -lCint -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lTree -lRint -lPostscript -lMatrix -lPhysics -lMathCore -lThread -lpthread -lm -ldl
+  LIBS =
+  CXXLIBS     = -L$(ROOTSYS)/lib/root -lCore -lCint -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lTree -lRint -lPostscript -lMatrix -lPhysics -lMathCore -lThread -lpthread -lm -ldl
   SRCS8    = mpi-non.f unix90.f mdp-uni90.f
 endif
 endif
@@ -340,7 +341,7 @@ OBJS = $(OBJS0) $(OBJS1) $(OBJS2) $(OBJS3) \
 			 $(OBJS10) $(OBJS11) $(OBJS12)
 
 $(TARGET) : $(OBJS)
-	$(LD) $(LDFLAGS) -o $@ $^ $(LIBS) $(LIBS) 
+	$(LD) $(LDFLAGS) -o $@ $^ $(CXXLIBS) $(LIBS) 
 
 .f.o:
 	$(FC) -c $(FCFLAGS) $(OPTFLAGS) $*.f 
